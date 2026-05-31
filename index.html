@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khari Bulbul Hotel - 5-Star Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --emerald: #093A24;
+            --gold: #D4AF37;
+            --ivory: #FDFBF7;
+        }
+
+        /* ============ HEADER & NAVIGATION ============ */
+        header {
+            background-color: var(--ivory);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--emerald);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            background: linear-gradient(rgba(9, 58, 36, 0.5), rgba(9, 58, 36, 0.5)), 
+                        url('hotel-outside.jpg') center/cover no-repeat;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--ivory);
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ============ ROOMS SECTION ============ */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--emerald);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--emerald);
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: var(--emerald);
+        }
+
+        /* ============ ROOMS SECTION SPECIFIC ============ */
+        #rooms {
+            background-color: var(--ivory);
+        }
+
+        /* ============ DINING SECTION ============ */
+        #dining {
+            background-color: white;
+        }
+
+        .dining-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .dining-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .dining-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--emerald);
+            margin-bottom: 20px;
+        }
+
+        .dining-content p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .dining-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--emerald);
+            padding: 12px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dining-button:hover {
+            background-color: var(--emerald);
+            color: var(--ivory);
+        }
+
+        /* ============ SPA & WELLNESS SECTION ============ */
+        #spa {
+            background-color: var(--ivory);
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+        }
+
+        .spa-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .spa-card:hover {
+            transform: scale(1.05);
+        }
+
+        .spa-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .spa-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(9, 58, 36, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--ivory);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .spa-card:hover .spa-overlay {
+            opacity: 1;
+        }
+
+        .spa-overlay h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .spa-overlay p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ============ FACILITIES & SAFETY SECTION ============ */
+        #facilities {
+            background: linear-gradient(rgba(9, 58, 36, 0.6), rgba(9, 58, 36, 0.6)), 
+                        url('hotel-mountain.jpg') center/cover no-repeat;
+            color: var(--ivory);
+        }
+
+        #facilities .section-title {
+            color: var(--ivory);
+        }
+
+        #facilities .section-title::after {
+            background-color: var(--gold);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .facility-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .facility-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .facility-content {
+            padding: 25px;
+        }
+
+        .facility-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .facility-content p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--ivory);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background-color: var(--emerald);
+            color: var(--ivory);
+            padding: 60px 40px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .footer-section a {
+            color: var(--ivory);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 30px;
+            font-size: 13px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+
+        /* ============ RESPONSIVE DESIGN ============ */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            .dining-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dining-img {
+                height: 300px;
+            }
+
+            .grid-3,
+            .grid-4,
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .card-img {
+                height: 200px;
+            }
+
+            .spa-card {
+                height: 280px;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+
+            .footer-content {
+                gap: 30px;
+                padding-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .card-content {
+                padding: 20px;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .facility-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============ HEADER & NAVIGATION ============ -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.jpg" alt="Khari Bulbul Hotel Logo">
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#dining">Dining</a></li>
+                <li><a href="#spa">Spa</a></li>
+                <li><a href="#safety">Safety</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Experience 5-Star Luxury & Mountain Serenity</h1>
+            <p>Discover Our Exclusive Retreats</p>
+        </div>
+    </section>
+
+    <!-- ============ ROOMS SECTION ============ -->
+    <section id="rooms">
+        <div class="section">
+            <h2 class="section-title">Our Luxurious Rooms</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <img src="standart.jpg" alt="Standard Room" class="card-img">
+                    <div class="card-content">
+                        <h3>Standard Room</h3>
+                        <p>Experience comfort and elegance in our meticulously designed standard rooms. Each space features premium furnishings, modern amenities, and stunning mountain views.</p>
+                        <a href="#" class="card-link">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="junior-room.jpg" alt="Junior Suite" class="card-img">
+                    <div class="card-content">
+                        <h3>Junior Suite</h3>
+                        <p>Upgrade your stay with our spacious junior suites. Featuring separate living areas, premium bedding, and exclusive amenities for enhanced relaxation and comfort.</p>
+                        <a href="#" class="card-link">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="deluxe-vip.jpg" alt="Deluxe VIP Suite" class="card-img">
+                    <div class="card-content">
+                        <h3>Deluxe VIP Suite</h3>
+                        <p>Indulge in ultimate luxury within our deluxe VIP suites. Private terraces, personalized concierge service, and world-class amenities await the most discerning guests.</p>
+                        <a href="#" class="card-link">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DINING SECTION ============ -->
+    <section id="dining">
+        <div class="section">
+            <h2 class="section-title">Fine Dining & Culinary Excellence</h2>
+            <div class="dining-grid">
+                <div>
+                    <img src="restaurantinside.jpg" alt="Restaurant Interior" class="dining-img">
+                </div>
+                <div class="dining-content">
+                    <h3>Gourmet Restaurant</h3>
+                    <p>Our award-winning restaurant showcases international cuisine crafted by renowned chefs. Each dish is a masterpiece, combining traditional flavors with contemporary techniques to create an unforgettable culinary journey.</p>
+                    <p>Savor exquisite wines paired with our signature dishes in an atmosphere of refined elegance. Our dedicated sommelier ensures every meal is an extraordinary experience.</p>
+                    <a href="#" class="dining-button">Make a Reservation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DINING CONTINUATION ============ -->
+    <section id="dining-cont" style="background: var(--ivory); padding: 0;">
+        <div class="section">
+            <div class="dining-grid" style="flex-direction: row-reverse;">
+                <div>
+                    <img src="restaurant-mountain.jpg" alt="Mountain Restaurant View" class="dining-img">
+                </div>
+                <div class="dining-content">
+                    <h3>Mountain View Lounge</h3>
+                    <p>Relax and unwind in our scenic mountain lounge, where breathtaking vistas complement our selection of premium beverages and light cuisine. Perfect for intimate conversations and memorable moments.</p>
+                    <p>Watch the sunset paint the mountains in golden hues while enjoying our signature cocktails and carefully curated selection of rare spirits and wines.</p>
+                    <a href="#" class="dining-button">Book Your Table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SPA & WELLNESS SECTION ============ -->
+    <section id="spa">
+        <div class="section">
+            <h2 class="section-title">Spa & Wellness Sanctuary</h2>
+            <div class="grid-4">
+                <div class="spa-card">
+                    <img src="hotel-spa.jpg" alt="Thermal Spa">
+                    <div class="spa-overlay">
+                        <h4>Thermal Spa</h4>
+                        <p>Rejuvenate in our luxurious thermal baths with mineral-rich waters</p>
+                    </div>
+                </div>
+
+                <div class="spa-card">
+                    <img src="bali-massage.jpg" alt="Bali Massage">
+                    <div class="spa-overlay">
+                        <h4>Bali Massage</h4>
+                        <p>Experience authentic Balinese massage techniques for ultimate relaxation</p>
+                    </div>
+                </div>
+
+                <div class="spa-card">
+                    <img src="turkish-hamam.jpg" alt="Turkish Hamam">
+                    <div class="spa-overlay">
+                        <h4>Turkish Hamam</h4>
+                        <p>Traditional steam and exfoliation therapy for complete rejuvenation</p>
+                    </div>
+                </div>
+
+                <div class="spa-card">
+                    <img src="gym.jpg" alt="Modern Gym">
+                    <div class="spa-overlay">
+                        <h4>Modern Gym</h4>
+                        <p>State-of-the-art fitness facilities with personal training available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FACILITIES & SAFETY SECTION ============ -->
+    <section id="safety">
+        <div class="section">
+            <h2 class="section-title">World-Class Facilities & Safety</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <img src="tennis-football.jpg" alt="Sports Facilities" class="facility-img">
+                    <div class="facility-content">
+                        <h4>Sports & Recreation</h4>
+                        <p>Professional-grade tennis courts, football fields, and outdoor activities to keep you active and entertained throughout your stay.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card">
+                    <img src="balcony-mountain.jpg" alt="Premium Views" class="facility-img">
+                    <div class="facility-content">
+                        <h4>Scenic Balconies</h4>
+                        <p>Stunning mountain vistas from private balconies. Perfect for sunrise yoga, meditation, or simply enjoying the tranquil mountain landscape.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card">
+                    <img src="hotel-security.jpg" alt="24/7 Security" class="facility-img">
+                    <div class="facility-content">
+                        <h4>24/7 Security</h4>
+                        <p>Round-the-clock security systems and professional staff ensure your complete safety and peace of mind during your entire stay with us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <ul>
+                    <li>📞 Phone: +1-800-LUXURY-01</li>
+                    <li>✉️ Email: reservations@kharibulbul.com</li>
+                    <li>📍 Address: Mountain Valley, Luxury Peak</li>
+                    <li>🕐 Available: 24/7</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#rooms">Rooms & Suites</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#spa">Spa & Wellness</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Booking</h4>
+                <ul>
+                    <li><a href="#">Check Availability</a></li>
+                    <li><a href="#">Make a Reservation</a></li>
+                    <li><a href="#">Group Bookings</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>About Khari Bulbul</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Awards & Recognition</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Khari Bulbul Hotel. All Rights Reserved.</p>
+            <p>Crafted with Luxury & Care | Your Mountain Sanctuary Awaits</p>
+        </div>
+    </footer>
+</body>
+</html>
